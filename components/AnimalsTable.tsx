@@ -43,12 +43,19 @@ export default function AnimalsTable({
           ))}
         </Table.Body>
       </Table>
-      <div className="flex justify-between items-center">
-        <Pagination
-          currentPage={pagination.current_page}
-          onPageChange={(page) => router.push(`/?page=${page}`)}
-          totalPages={pagination.total_pages}
-        />
+      <div className="mt-2 flex justify-between items-center">
+        <div className="flex flex-col">
+          <p className="text-gray-500">
+            Showing <span className="font-bold">{pagination.current_page}</span>{" "}
+            of <span className="font-bold">{pagination.total_pages}</span> pages
+          </p>
+          <Pagination
+            showIcons
+            currentPage={pagination.current_page}
+            onPageChange={(page) => router.push(`/?page=${page}`)}
+            totalPages={pagination.total_pages}
+          />
+        </div>
         <span className="text-gray-500">
           Total results: {pagination.total_count.toLocaleString("en-US")}
         </span>
